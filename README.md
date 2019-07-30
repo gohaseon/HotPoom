@@ -1,6 +1,7 @@
 # 여기는 한글 프로젝트 설명 페이지
 
-
+한국어 | [English]
+(https://github.com/Myorisma/gear/blob/master/README-EN.md)
 
 ## 두번째 제목
 
