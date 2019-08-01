@@ -1,7 +1,6 @@
 # test project
 
-Engilsh | 한국어
-(https://github.com/Myorisma/gear/blob/master/README.md)
+Engilsh | 한국어(https://github.com/Myorisma/gear/blob/master/README.md)
 
 ## first title
 1. dog
