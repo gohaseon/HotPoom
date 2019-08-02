@@ -1,0 +1,407 @@
+@charset "UTF-8";
+#accountUpdateSection {
+    position: relative;
+    /*background-color: #C50532;*/
+    /*padding-left: 40px;*/
+    /*padding-top: 10px;*/
+    margin: auto;
+    width: 500px; height: 800px;
+}
+.personal_information_inner {
+    position: absolute;
+    width: 500px; height: 40px;
+}
+.personal_information_inner_head {
+    position: absolute;
+    width: 100px; height: 40px;
+    /*border: 1px solid #424242;*/
+    line-height: 40px;
+}
+.personal_information_inner_middle {
+    position: absolute;
+    width: 200px; height: 40px;
+    background-color: white;
+    line-height: 40px;
+    left: 100px;
+    text-indent: 10px;
+}
+.personal_information_inner_middle.personal_information_input {
+    width: 200px;
+    border: none;
+    pointer-events: none;
+    font-size: 18px;
+    font-weight: bold;
+    text-indent: 10px;
+}
+.personal_information_inner_foot {
+    position: absolute;
+    width: 70px; height: 40px;
+    line-height: 40px;
+    right: 10px;
+}
+button {
+    background-color: #fff;
+    user-select: none;
+    outline: none;
+    font-size: 18px;
+    cursor: pointer;
+    border: 1px solid #C50532;
+    border-radius: 10px;
+    color: #C50532;
+}
+button:hover {
+    background-color: #C50532;
+    color: white;
+}
+button>a {
+    color: #C50532;
+}
+button>a:hover {
+    color: #fff;
+}
+#personalInformationWrap {
+    position: absolute;
+    width: 500px; min-height: 250px;
+    /*background-color: #dedede;*/
+}
+/*#nameUpdateInner {*/
+/*    background-color: blanchedalmond;*/
+/*}*/
+#genderUpdateInner {
+    top: 102px;
+    /*background-color: darkgoldenrod;*/
+}
+#birthUpdateInner {
+    top: 147px;
+    /*background-color: darkseagreen;*/
+}
+#emailUpdateInner {
+    top: 195px;
+    /*background-color: green;*/
+}
+#phoneNumUpdateInner {
+    top: 248px;
+    /*background-color: deeppink;*/
+}
+#paymentInformationWrap {
+    top: 400px;
+    position: absolute;
+    width: 500px; min-height: 450px;
+    /*background-color: cadetblue;*/
+}
+#creditCardSelectInner {
+    position: absolute;
+    width: 500px; min-height: 230px;
+    /*background-color: coral;*/
+}
+.creditCardDetailBox {
+    position: absolute;
+    width: 500px; min-height: 80px;
+    /*background-color: fuchsia;*/
+}
+.creditCardBankIcon {
+    position: absolute;
+    left: 20px; top: 20px;
+    width: 50px; height: 50px;
+}
+.creditCardDetail {
+    position: absolute;
+    left: 90px;
+    top: 28px;
+    /* font-size: 18px; */
+    width: 90px;
+    height: 60px;
+    /* background-color: darkturquoise; */
+}
+.payment_information_credit_card_btn {
+    position: absolute;
+    height: 50px;
+    line-height: 50px;
+}
+.delete_card {
+    height: 50px; width: 90px; right: 10px;
+}
+.payment_information_credit_card_btn.default_setting {
+    right: 105px; width: 130px; top: 15px;
+}
+.payment_information_credit_card_btn.delete_card {
+    top: 15px;
+}
+.payment_information_credit_card_btn.add_card {
+    width: 170px; bottom: 18px; left: 10px;
+}
+#receiptAccountSelectInner {
+    position: absolute;
+    top: 303px; width: 500px; height: 122px;
+    /*background-color: gold;*/
+}
+.receipt_account_detail {
+    position: absolute;
+    padding: 5px 30px;
+    width: 430px; height: 50px;
+    /*background-color: #9e9e9e;*/
+}
+.receipt_account_btn {
+    position: absolute;
+    bottom: 5px;
+}
+#creditCardAddSection {
+    width: 500px; height: 600px;
+    position: fixed;
+    padding: 5px 30px;
+    top: 50%; left: 50%;
+    background-color: white;
+    margin-top: -305px; margin-left: -280px;
+}
+#creditCardSelectWrap {
+    position: absolute;
+    /*background-color: #9e9e9e;*/
+    width: 500px; height: 100px;
+}
+#cardPersonInsertWrap {
+    top: 190px;
+    position: absolute;
+    /*background-color: green;*/
+    width: 500px; height: 100px;
+}
+#cardPersonFirstNameInsertInner {
+    /*background-color: darksalmon;*/
+    position: absolute;
+    left: 0;
+    width: 230px; height: 100px;
+}
+#cardPersonNameInsertInner {
+    /*background-color: fuchsia;*/
+    position: absolute;
+    right: 0;
+    width: 245px; height: 100px;
+}
+#cardInformaionInsertWrap {
+    position: absolute;
+    top: 290px;
+    /*background-color: gold;*/
+    width: 500px; height: 170px;
+}
+#cardInformaionInsertInner {
+    width: 500px; height: 60px;
+    position: absolute;
+    top: 110px;
+    /*background-color: blueviolet;*/
+}
+#creditCardInsertBtnWrap {
+    /*background-color: darkseagreen;*/
+    position: absolute;
+    bottom: 30px;
+    width: 500px; height: 80px;
+}
+.credit_card_insert_btn {
+    border: none;
+    outline: none;
+    user-select: none;
+    width: 100px; height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    color: #C50532;
+    background-color: white;
+    border: 1px solid #C50532;
+    cursor: pointer;
+}
+.credit_card_insert_btn:hover {
+    color: white;
+    background-color: #C50532;
+}
+.credit_card_popup_cancel {
+    position: absolute;
+    left: 90px; top: 20px;
+}
+.credit_card_popup_register {
+    position: absolute;
+    right: 110px; top: 20px;
+}
+.card_list_select {
+    position: absolute;
+    left: 30px;
+    width: 120px; height: 30px;
+    font-size: 15px;
+}
+.card_name_insert_input {
+    width: 130px; height: 25px;
+    position: absolute;
+    left: 30px;
+    font-size: 15px;
+}
+.card_information_insert_input {
+    width: 220px; height: 25px;
+    position: absolute;
+    left: 30px;
+    font-size: 15px;
+}
+.card_information_detail_input {
+    width: 80px; height: 25px;
+    position: absolute;
+    right: 30px;
+    font-size: 15px;
+    top: 15px;
+}
+.card_information_detail {
+    position: absolute;
+    font-size: 18px;
+    font-weight: bold;
+    right: 120px; top: 18px;
+}
+.credit_card_month {
+    left: 90px;
+}
+.credit_card_year {
+    left: 220px;
+}
+.limit {
+    left: 20px;
+    font-size: 15px;
+    top: 20px;
+}
+.slash {
+    left: 190px;
+    font-size: 15px;
+    top: 20px;
+}
+#creditCardAddSection {
+    display: none;
+}
+#receiptAccountAddSection {
+    display: none;
+}
+.account_h2 {
+    font-size: 21px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.account_h3 {
+    font-size: 19px;
+    font-weight: bold;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    text-indent: 8px;
+}
+#receiptAccountAddSection {
+    width: 500px; height: 600px;
+    position: fixed;
+    padding: 5px 30px;
+    top: 50%; left: 50%;
+    background-color: white;
+    margin-top: -305px; margin-left: -280px;
+}
+#bankSelectWrap {
+    position: absolute;
+    /*background-color: #9e9e9e;*/
+    width: 500px; height: 110px;
+}
+#personInsertWrap {
+    top: 210px;
+    position: absolute;
+    /*background-color: green;*/
+    width: 500px; height: 130px;
+}
+#accountInsertWrap {
+    position: absolute;
+    top: 350px;
+    /*background-color: gold;*/
+    width: 500px; height: 130px;
+}
+#accountInsertBtnWrap {
+    /*background-color: #C50532;*/
+    position: absolute;
+    bottom: 30px;
+    width: 500px; height: 80px;
+}
+.account_insert_btn {
+    border: none;
+    outline: none;
+    user-select: none;
+    width: 100px; height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    color: #C50532;
+    background-color: white;
+    border: 1px solid #C50532;
+    cursor: pointer;
+}
+.account_insert_btn:hover {
+    color: white;
+    background-color: #C50532;
+}
+.account_popup_cancel {
+    position: absolute;
+    left: 90px; top: 20px;
+}
+.account_popup_register {
+    position: absolute;
+    right: 110px; top: 20px;
+}
+.bank_list_select {
+    position: absolute;
+    left: 30px;
+    width: 120px; height: 30px;
+    font-size: 15px;
+}
+.account_insert_input {
+    position: absolute;
+    left: 30px;
+    width: 200px; height: 35px;
+    font-size: 15px;
+}
+#bg {
+    z-index: 2;
+}
+#creditCardAddSection {
+    z-index: 3;
+}
+#receiptAccountAddSection {
+    z-index: 3;
+}
+.account_h1 {
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+#receiptAccountDetailBox {
+    /*background-color: #4b96e6;*/
+    top: 100px;
+}
+.receipt_account_no {
+    line-height: 50px;
+}
+.receipt_account_btn.add_card {
+    height: 50px;
+    width: 90px;
+    right: 10px;
+    font-size: 17px;
+    line-height: 17px;
+}
+.name_change_success {
+    /*display: none;*/
+    color: #C50532;
+    position: absolute;
+    top: 40px; left: 80px;
+}
+#accountPhoneConfirm {
+    position: absolute;
+    top: 75px;
+    display: none;
+    /*background-color: #0055aa;*/
+    border: 1px solid #424242;
+}
+.phone_num_confirm {
+    position: absolute;
+    right: 10px;
+    top: 75px;
+    width: 70px;
+    height: 40px;
+    line-height: 40px;
+    display: none;
+}
+.send_number {
+    right: 90px;
+    display: none;
+}
