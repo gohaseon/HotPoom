@@ -49,7 +49,7 @@ $body.click(function () {
     $lnb.hide();
 });//$body click end
 $loginPopupClose.on("click",function(){
-	console.log("로그인 닫기");
+	//console.log("로그인 닫기");
 	$(this).parents("#bg").hide();
 });//$loginPopupClose click end
 
