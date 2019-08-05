@@ -43,7 +43,7 @@
                 <div class="little_title"><i class="fas fa-check"></i> 수용 가능 펫</div>
                 <p>${poom.speciesName } ${poom.petCnt }마리</p>
                 <div class="little_title"><i class="fas fa-check"></i> 편의시설</div>
-                <p>${poom.amenity }</p>
+                <p id="poomAmenity">${poom.amenity }</p>
             </div><!--//poomInformationInner end-->
             <div id="poomIntroduceInner">
                 <h3>품 소개</h3>
@@ -244,11 +244,16 @@
     let $totalAmount = $("#totalAmount");
 
     //날짜
-    picker.on('change:end', test);
+    picker.on('change:end', getTotalAmount);
     //마리 수
-    $count.on('change', test);
+    $count.on('change', function(){
+    	if($("#endpicker-input").val()) {
+	    	getTotalAmount();
+    	}
+    }//$count change end
 
-    function test() {
+  	//가격계산
+    function getTotalAmount() {
         let checkInVal = $("#startpicker-input").val();
         let checkOutVal = $("#endpicker-input").val();
         let checkIn = moment(checkInVal);
@@ -269,8 +274,7 @@
         let totalPrice = priceCount+fees
         $totalAmount.text(totalPrice.toLocaleString());
 
-    }
-    //가격계산
+    }//getTotalAmount end
 
 
 	$reviewInner = $("#reviewInner");
