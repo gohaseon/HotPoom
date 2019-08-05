@@ -20,9 +20,9 @@
             <input id="bookingNo" type="hidden" name="bookingNo" value="">
             <input id="score" type="hidden" name="score" value="">
                 <button type="button" class="close_popup far fa-times-circle"></button>
-                <div id="poomImg" style='background-image:url("/img/Lighthouse.jpg")'></div><!--사진-->
-                <div id="poomName">TME 마을</div>
-                <div id="poomDate">8.18 ~ 8.19, 2019</div>
+                <div id="poomImg" style='background-image:url("/img/img")'></div><!--사진-->
+                <div id="poomName">TITLE</div>
+                <div id="poomDate">DATE</div>
                 <textarea id="poomTextarea" name="content" placeholder="리뷰를 입력해주세요."></textarea>
                 <div id="poomGrade">
                     <i class="far fa-star"></i>
