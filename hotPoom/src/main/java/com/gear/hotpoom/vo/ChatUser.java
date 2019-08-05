@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class ChatUser {
 	private int no, userNo, roomNo;
-	private String type, title;
+	private String type, title, profileImg, name;
 	private Timestamp regdate, lastTime;
 	
 	public ChatUser() {
@@ -66,6 +66,22 @@ public class ChatUser {
 
 	public void setLastTime(Timestamp lastTime) {
 		this.lastTime = lastTime;
+	}
+
+	public String getProfileImg() {
+		return profileImg;
+	}
+
+	public void setProfileImg(String profileImg) {
+		this.profileImg = profileImg;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	

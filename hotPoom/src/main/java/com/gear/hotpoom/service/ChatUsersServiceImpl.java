@@ -34,7 +34,6 @@ public class ChatUsersServiceImpl implements ChatUsersService {
 			user.setLastTime(message.getRegdate());
 
 		}
-
 		return chatUsers;
 	}
 }

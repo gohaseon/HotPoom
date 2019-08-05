@@ -148,15 +148,19 @@
 	<!--//messageSection-->
 	<c:import url="/WEB-INF/template/footer.jsp" />
 	<script type="text/template" id="msgListTmp">
+	<@ _.each(lists, function(list) { @>
 		<li class="message_list">
-        	<img class="profile" src="profile/user/<@=chatRooms.profileImg@>" width="60px" height="60px">
-            <p class="nickname"><@=chatRooms.name@></p>
-            <p class="message">화나요!</p>
-            <time class="time">10분 전</time>
+        	<img class="profile" src="profile/user/<@=list.profileImg@>" width="60px" height="60px">
+            <p class="nickname"><@=list.name@></p>
+            <p class="message"><@=list.title@></p>
+            <time class="time"><@=list.lastTime@></time>
             <input type="checkbox" class="listEditCheckBox"/>
         </li>
+	<@ }); @>
 	</script>
 	<script>
+	
+	_.templateSettings = {interpolate: /\<\@\=(.+?)\@\>/gim,evaluate: /\<\@([\s\S]+?)\@\>/gim,escape: /\<\@\-(.+?)\@\>/gim};
 	
 	const msgListTmp = _.template($("#msgListTmp").html());
 	
@@ -228,16 +232,14 @@ function connect() {
 	stompClient.connect({},function() {
 		
 	// 채팅리스트 얻어오는 주소 구독
-	stomClient.subscribe("/topic/chat/list", function(p) {
+	stompClient.subscribe("/topic/chat/list", function(p) {
 		
 		
 		const list = JSON.parse(p.body);
 		
 		console.log(list);
 
-		$("#messageListInner").empty().append(msgListTmp({
-			list : list
-		}));
+		$("#messageListInner").empty().append(msgListTmp({"lists" : list}));
 		
 	});// subscribe() end
 	
