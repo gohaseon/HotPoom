@@ -9,8 +9,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM pooms p, species s, photos pt, users u
 		WHERE p.species_no = s.no
 		AND p.user_no = u.no
-		AND pt.content_no = p.no
-		AND pt.type = 'M'
+		AND pt.content_no(+) = p.no
+		AND pt.type(+) = 'M'
 		AND p.no = #{no}
 	</select>
 

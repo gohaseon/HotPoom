@@ -6,9 +6,18 @@ public class Review {
 	private int no, userNo, score;
 	private String bookingNo, content, userName, profileImg;
 	private Timestamp regdate;
+	private double avgStar;
 	
 	public Review() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public double getAvgStar() {
+		return avgStar;
+	}
+
+	public void setAvgStar(double avgStar) {
+		this.avgStar = avgStar;
 	}
 
 	public String getUserName() {

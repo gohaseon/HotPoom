@@ -60,13 +60,13 @@
     left: 0;
     top: 0;
 }
-#addCredit {
+#addCredit.btn {
     color: #3397eb;
     font-size: 14px;
     border: none;
     text-decoration: underline;
 }
-#addCredit:hover {
+#addCredit:hover.btn {
     color: #3397eb;
     background-color: transparent;
     box-shadow: none;
@@ -137,4 +137,26 @@
 }
 #creditCardAddPopup {
     display: none;
+}
+#creditCardRegisterBtn {
+	position:absolute;
+	width: 150px;
+	height: 40px;
+	bottom: 40px;
+	left: 160px;
+}
+#creditCardAddPopup .btn {
+    border: 2px solid #C50532;
+    border-radius: 10px;
+    color: #C50532;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+#creditCardAddPopup .btn:hover {
+    background-color: #C50532;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }

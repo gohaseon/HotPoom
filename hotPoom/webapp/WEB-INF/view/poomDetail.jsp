@@ -32,12 +32,14 @@
             <div id="poomInformationInner">
                 <h3>기본 정보</h3>
                 <div class="little_title"><i class="far fa-clock"></i> 체크인 ${poom.checkIn }:00 ~ 체크아웃 ${poom.checkOut }:00</div>
-                <div class="little_title"><i class="fas fa-check"></i> 호스트가 소유중인 펫</div>
-                <div id="hostUserPet">
-                <c:forEach items="${pets }" var="pet">
-                <img class="hostPetProfileImage" src="/profile/pet/${pet.profileImg }">
-                </c:forEach>
-                </div>
+                <c:if test="${!petList.isEmpty() }">
+	                <div class="little_title"><i class="fas fa-check"></i> 호스트가 소유중인 펫</div>
+	                <div id="hostUserPet">
+		                <c:forEach items="${petList }" var="pet">
+		                	<img class="hostPetProfileImage" src="/profile/pet/${pet.profileImg }">
+		                </c:forEach>
+	                </div>
+                </c:if>
                 <div class="little_title"><i class="fas fa-check"></i> 수용 가능 펫</div>
                 <p>${poom.speciesName } ${poom.petCnt }마리</p>
                 <div class="little_title"><i class="fas fa-check"></i> 편의시설</div>
@@ -133,7 +135,7 @@
     <div id="poomBg">
         <div id="poomPhotoDetail">
             <div id="poomPhotoSection">
-                <img id="poomPhoto" src="/img/poom/">
+                <img id="poomPhoto" src="">
                 <div id="poomPhotoBtnWrap">
                     <div id="prevBtn" class="poom_photo_btn"><i class="fas fa-chevron-left"></i></div>
                     <div id="nextBtn" class="poom_photo_btn"><i class="fas fa-chevron-right"></i></div>
@@ -158,8 +160,8 @@
         </div><!--//poomPhotoDetail-->
     </div><!--//poomBg-->
 <c:import url="/WEB-INF/template/footer.jsp"/>
-<script src="/js/paymentPopup.js"></script>
 <script>
+	console.log("lat:${poom.lat}, lng:${poom.lng}");
     //*************카카오맵***********************************************************
     var mapContainer = document.getElementById('kakaoMap'), // 지도를 표시할 div
         mapOption = {
@@ -203,7 +205,7 @@
         if(sTop>=730) {
             $bookingDetail.css({
                 position: "fixed",
-                top:0
+                top:"20px"
             });
         }else {
             $bookingDetail.css({
@@ -275,7 +277,7 @@
     
     //리뷰에서 신고하기를 눌렀을 때
 	$reviewInner.on("click",".review_card_warning", function() {
-		const review no = this.dataset.no;
+		const reviewNo = this.dataset.no;
 		
 	});//.review_card_warning click end
     
@@ -479,7 +481,45 @@
     $("#poomInfoSection .far").click("on", function () {
         $("#poomBg").hide();
     });//#poomInfoSection .fas click() end
+    
+    $bookingDetail = $("#bookingDetail");
+    $bookingDetail.on("submit", function(e){
+    	e.preventDefault();
+    	$paymentBg.show();
+    	
+    });//예약 눌렀을 때
+    /************************paymentPopup******************************/
+    $creditCardAddPopupCloseBtn = $("#creditCardAddPopup .close_popup");
+    $creditCardAddPopup = $("#creditCardAddPopup");
+    $paymentPopupCLoseBtn = $("#paymentPopup .close_popup");
+    $paymentPopup = $("#paymentPopup");
+    $paymentBg = $("#paymentBg");
+    $creditCardAddForm = $("#creditCardAddForm");
+    $addCredit = $("#addCredit");
 
+
+    $addCredit.on("click",function () {
+        $creditCardAddPopup.show();
+    });//$addCredit end
+
+    //결제팝업 끄기 버튼
+    $paymentPopupCLoseBtn.on("click",function () {
+        $paymentBg.hide();
+    });//$paymentPopupCLoseBtn end
+
+    //결제카드추가 팝업 끄기 버튼
+    $creditCardAddPopupCloseBtn.on("click",function () {
+        $creditCardAddPopup.hide();
+    });//$creditCardAddPopupCloseBtn end
+
+    //결제카드추가 submit
+    $creditCardAddForm.on("submit",function (e) {
+        e.preventDefault();
+        $creditCardAddPopup.hide();
+    });//$creditCardAddForm end
+
+
+    /************************paymentPopup******************************/
 </script>
 </body>
 </html>

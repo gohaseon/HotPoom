@@ -17,7 +17,8 @@ public class poomController {
 	
 	//동호, poomDetail 기본 정보 가져오기(리뷰제외)
 	@RequestMapping(value="/poom/{no}",method=RequestMethod.GET)
-	public String poomDetail(@PathVariable int no,Model model) {
+	public String poomDetail(@PathVariable int no, Model model) {
+		System.out.println("PoomController poomDetail() no:"+no);
 		model.addAllAttributes(service.getDetail(no));
 		return "poomDetail";
 	}

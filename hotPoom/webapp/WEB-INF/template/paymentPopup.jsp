@@ -30,7 +30,8 @@
         <form id="creditCardAddForm" action="" method="post">
         <div id="creditCardSelectWrap">
             <h5 class="title">카드</h5>
-            <select name='cardNo'  class='card_list_select'>
+            <input type="hidden" name="bankType" value="C"/>
+            <select name='bankNo'  class='card_list_select'>
                 <option value='0'>-선택-</option>
                 <option value='1'>SC제일은행</option>
                 <option value='2'>경남은행</option>
@@ -71,12 +72,9 @@
                 <input name="year" class="card_information_detail_input credit_card_year" placeholder="년도"/>
                 <span class="card_information_detail">cvc</span>
                 <input name="cvc" class="card_information_detail_input" placeholder="cvc"/>
-            </div>
-        </div>
-
-        <div id="creditCardInsertBtnWrap">
-            <button type="submit" class="credit_card_insert_btn credit_card_popup_register btn">등 록</button>
-        </div>
+            </div><!-- //cardInformaionInsertInner -->
+        </div><!-- //cardInformaionInsertWrap -->
+        <button type="submit" id="creditCardRegisterBtn" class="btn">등 록</button>
         </form>
 	</div>
 </div><!-- //paymentBg -->
