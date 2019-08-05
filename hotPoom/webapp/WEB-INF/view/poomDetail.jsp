@@ -247,10 +247,10 @@
     picker.on('change:end', getTotalAmount);
     //마리 수
     $count.on('change', function(){
-    	if($("#endpicker-input").val()) {
+    	if($("#endpicker-input").val()>0) {
 	    	getTotalAmount();
     	}
-    }//$count change end
+    });//$count change end
 
   	//가격계산
     function getTotalAmount() {
@@ -274,7 +274,7 @@
         let totalPrice = priceCount+fees
         $totalAmount.text(totalPrice.toLocaleString());
 
-    }//getTotalAmount end
+    };//getTotalAmount end
 
 
 	$reviewInner = $("#reviewInner");

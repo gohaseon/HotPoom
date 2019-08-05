@@ -323,3 +323,7 @@
 #poomAmenity {
 	width: 550px;
 }
+#sendMessage>a:hover {
+	color:#3397EB;
+	text-decoration: underline;
+}

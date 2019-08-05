@@ -10,16 +10,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.gear.hotpoom.service.PoomsService;
 
 @Controller
-public class poomController {
+public class PoomController {
 	@Autowired
 	private PoomsService service;
-	
 	
 	//동호, poomDetail 기본 정보 가져오기(리뷰제외)
 	@RequestMapping(value="/poom/{no}",method=RequestMethod.GET)
 	public String poomDetail(@PathVariable int no, Model model) {
+		
 		System.out.println("PoomController poomDetail() no:"+no);
 		model.addAllAttributes(service.getDetail(no));
+		
 		return "poomDetail";
 	}
 
