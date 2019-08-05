@@ -4,8 +4,8 @@ import java.sql.Timestamp;
 
 public class ChatUser {
 	private int no, userNo, roomNo;
-	private String type;
-	private Timestamp regdate;
+	private String type, title;
+	private Timestamp regdate, lastTime;
 	
 	public ChatUser() {
 		// TODO Auto-generated constructor stub
@@ -50,5 +50,24 @@ public class ChatUser {
 	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
 	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+
+	public Timestamp getLastTime() {
+		return lastTime;
+	}
+
+	public void setLastTime(Timestamp lastTime) {
+		this.lastTime = lastTime;
+	}
+
+	
 	
 }

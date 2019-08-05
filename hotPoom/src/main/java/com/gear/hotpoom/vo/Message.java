@@ -3,7 +3,7 @@ package com.gear.hotpoom.vo;
 import java.sql.Timestamp;
 
 public class Message {
-	private int no, chatUserNo;
+	private int no, userNo, chatRoomNo;
 	private String content;
 	private Timestamp regdate;
 	
@@ -19,12 +19,20 @@ public class Message {
 		this.no = no;
 	}
 
-	public int getChatUserNo() {
-		return chatUserNo;
+	public int getUserNo() {
+		return userNo;
 	}
 
-	public void setChatUserNo(int chatUserNo) {
-		this.chatUserNo = chatUserNo;
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
+	}
+
+	public int getChatRoomNo() {
+		return chatRoomNo;
+	}
+
+	public void setChatRoomNo(int chatRoomNo) {
+		this.chatRoomNo = chatRoomNo;
 	}
 
 	public String getContent() {
