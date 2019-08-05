@@ -153,12 +153,14 @@
         	<img class="profile" src="profile/user/<@=list.profileImg@>" width="60px" height="60px">
             <p class="nickname"><@=list.name@></p>
             <p class="message"><@=list.title@></p>
-            <time class="time"><@=list.lastTime@></time>
+            <time class="time"><@=moment(list.lastTime).fromNow()@></time>
             <input type="checkbox" class="listEditCheckBox"/>
         </li>
 	<@ }); @>
 	</script>
 	<script>
+	
+	moment.locale("ko");
 	
 	_.templateSettings = {interpolate: /\<\@\=(.+?)\@\>/gim,evaluate: /\<\@([\s\S]+?)\@\>/gim,escape: /\<\@\-(.+?)\@\>/gim};
 	

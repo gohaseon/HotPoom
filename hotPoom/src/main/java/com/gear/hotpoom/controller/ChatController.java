@@ -34,7 +34,6 @@ public class ChatController {
 	@SendTo("/topic/chat/list")
 	public List<ChatUser> getChatRoomList(int no, SimpMessageHeaderAccessor accessor) {
 		//@DestinationVariable = @PathVariable
-		System.out.println(chatUsersService.getChatRoomList(no));
 		return chatUsersService.getChatRoomList(no);
 	}
 }
