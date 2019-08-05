@@ -1,94 +1,82 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>HOTPOOM</title>
     <c:import url="/WEB-INF/template/link.jsp"/>
-    <link rel="stylesheet" href="css/poomPhotoDetail.css">
-    <link rel="stylesheet" href="css/paymentPopup.css">
-    <link rel="stylesheet" href="css/poomDetail.css">
+    <link rel="stylesheet" href="/css/poomPhotoDetail.css">
+    <link rel="stylesheet" href="/css/paymentPopup.css">
+    <link rel="stylesheet" href="/css/poomDetail.css">
 </head>
 <body>
 <c:import url="/WEB-INF/template/header.jsp"/>
 <c:import url="/WEB-INF/template/paymentPopup.jsp"/>
-<c:import url="/WEB-INF/template/poomPhotoDetailPopup.jsp"/>
     <div id="poomDetailSection">
-        <div id="poomMainImage" style="background-image: url(img/poom/even-hotels-eugene-5405616297-4x3.jpg)">
+        <div id="poomMainImage" style="background-image: url(/img/poom/${poom.mainImg})">
         </div><!--//poomMainImage end-->
         <button id="viewPhotosBtn" type="button" class="btn">View Photos</button>
         <div id="poomDetailWrap">
-            <h2>펫플러스 애견호텔</h2>
-            <div id="poomAddress">경기도 부천시 원미구 계남로 60</div>
+            <h2>${poom.title}</h2>
+            <div id="poomAddress">${poom.mainAddress }</div>
             <div id="hostUserProfile">
-                <img id="hostUserProfileImage" src="profile/user/judy.jpg"/>
+                <img id="hostUserProfileImage" src="/profile/user/${poom.hostImg }"/>
                 <div id="hostUserName">
-                    <span>최수정크크</span>
+                    <span>${poom.hostName }</span>
                 </div>
-                <div id="sendMessage" class="btn"><a href="message.html">호스트에게 연락하기</a></div>
+                <div id="sendMessage" class="btn"><a href="/message/${poom.userNo }">호스트에게 연락하기</a></div>
             </div>
             <div id="poomInformationInner">
                 <h3>기본 정보</h3>
-                <div class="little_title"><i class="far fa-clock"></i> 체크인 10:00 ~ 체크아웃 13:00</div>
-                <div class="little_title"><i class="fas fa-check"></i> 호스트의 소유중인 펫</div>
+                <div class="little_title"><i class="far fa-clock"></i> 체크인 ${poom.checkIn }:00 ~ 체크아웃 ${poom.checkOut }:00</div>
+                <div class="little_title"><i class="fas fa-check"></i> 호스트가 소유중인 펫</div>
                 <div id="hostUserPet">
-                <img class="hostPetProfileImage" src="profile/pet/marmot.PNG">
-                <img class="hostPetProfileImage" src="profile/pet/깐동생일.PNG">
+                <c:forEach items="${pets }" var="pet">
+                <img class="hostPetProfileImage" src="/profile/pet/${pet.profileImg }">
+                </c:forEach>
                 </div>
-                <div class="little_title"><i class="fas fa-check"></i> 수요 가능 펫</div>
-                <p>강아지 10마리</p>
+                <div class="little_title"><i class="fas fa-check"></i> 수용 가능 펫</div>
+                <p>${poom.speciesName } ${poom.petCnt }마리</p>
                 <div class="little_title"><i class="fas fa-check"></i> 편의시설</div>
-                <p>충분한 사료</p>
+                <p>${poom.amenity }</p>
             </div><!--//poomInformationInner end-->
             <div id="poomIntroduceInner">
                 <h3>품 소개</h3>
-                <div class="little_title"><i class="far fa-building"></i> 건물 유형 : Hotel</div>
-                <div class="little_title"><i class="fas fa-check"></i> 소개</div>
-                <div id="poomIntroduceDetail">
-                    늘 밝은 얼굴로 펫을 맞이합니다 ㅎㅎㅎ늘 밝은 얼굴로 펫을 맞이합니다 ㅎㅎㅎ늘 밝은 얼굴로 펫을 맞이합니다 ㅎㅎㅎ늘 밝은 얼굴로 펫을 맞이합니다 ㅎㅎㅎ
-                    늘 밝은 얼굴로 펫을 맞이합니다 ㅎㅎㅎ늘 밝은 얼굴로 펫을 맞이합니다 ㅎㅎㅎ늘 밝은 얼굴로 펫을 맞이합니다 ㅎㅎㅎ늘 밝은 얼굴로 펫을 맞이합니다 ㅎㅎㅎ
-                    늘 밝은 얼굴로 펫을 맞이합니다 ㅎㅎㅎ늘 밝은 얼굴로 펫을 맞이합니다 ㅎㅎㅎ늘 밝은 얼굴로 펫을 맞이합니다 ㅎㅎㅎ늘 밝은 얼굴로 펫을 맞이합니다 ㅎㅎㅎ
-                    늘 밝은 얼굴로 펫을 맞이합니다 ㅎㅎㅎ늘 밝은 얼굴로 펫을 맞이합니다 ㅎㅎㅎ
-                </div>
-                <div class="little_title"><i class="fas fa-check"></i> 이용시 주의사항</div>
-                <div id="precautions">
-                    - 배변 패드
-                    <br>
-                    - 예방접종 : 심장 사상충
-                    <br>
-                    - 이곳은 에디터 부분이 입력되는 부분이기때문에 따닥따닥 붙어버려쪄염
-                </div>
+                <div class="little_title"><i class="far fa-building"></i> 건물 유형 : ${poom.type.equals("P")?"House":"Hotel" }</div>
+                <div class="little_title"><i class="fas fa-check"></i> 소개 및 주의사항</div>
+                <div id="poomIntroduceDetail">${poom.introduce }</div>
             </div><!--//poomIntroduceInner end-->
             <div id="reviewInner">
                 <h3>리뷰</h3>
                 <div id="grade"><i class="fas fa-star"></i> 4.8(2)</div>
                 <div class="review_card">
                     <ul>
+                    <c:if test="${reviewList.isEmpty() }">
                         <li>
                             <div id="reviewNone">
                                 아직 등록된 리뷰가 없습니다 <i class="far fa-sad-cry"></i>
                             </div>
                         </li>
+                    </c:if>
+                    <c:forEach items="${rerviewList }" var="review">
                         <li>
-                            <div class="review_card_content">저희 집 고양희 집 고양이가 다른 곳에 맡기면항상 예민해져서 왔는ㄷ ㅔ여기는
-                            평소랑 저희 집 고양이가 다른 곳에 맡기면항상 예민해져서 왔는ㄷ ㅔ여기는 평소랑 저희 집 고양이가 다른 곳에 맡
-                            기면항상 예민해져서 왔는ㄷ ㅔ여기는 평소랑 저희 집 고양이가 다른 곳에 맡기면항상 예민해져서 왔는ㄷ ㅔ여기는 평소
-                            랑 저희 집를 많이 주는지 애기가 똥똥해져셔 왔더라구요... 아니 뭐 귀엽다고여 ㅎㅎㅎㅎ
-                            </div>
-                            <div class="review_card_img"><img src="profile/user/defaultProfile.jpg"/></div>
-                            <div class="review_card_user_name">이주하</div>
-                            <div class="review_card_date">2018.09</div>
-                            <div class="review_card_warning">신고</div>
+                            <div class="review_card_content">${review.content }</div>
+                            <div class="review_card_img"><img src="/profile/user/${review.profileImg }"/></div>
+                            <div class="review_card_user_name">${review.userName }</div>
+                            <div class="review_card_date"><fmt:formatDate value="${review.regdate }" pattern="YYYY.MM"/></div>
+                            <div class="review_card_warning" data-no="${review.no }">신고</div>
                         </li>
+                    </c:forEach>
                         <li>
                             <div class="review_card_content">저희 집 고양희 집 고양이가 다른 곳에 맡기면항상 예민해져서 왔는ㄷ ㅔ여기는
                                 평소랑 저희 집 고양이가 다른 곳에 맡기면항상 예민해져서 왔는ㄷ ㅔ여기는 평소랑 저희 집 고양이가 다른 곳에 맡
                                 기면항상 예민해져서 왔는ㄷ ㅔ여기는 평소랑 저희 집 고양이가 다른 곳에 맡기면항상 예민해져서 왔는ㄷ ㅔ여기는 평소
                                 랑 저희 집를 많이 주는지 애기가 똥똥해져셔 왔더라구요... 아니 뭐 귀엽다고여 ㅎㅎㅎㅎ
                             </div>
-                            <div class="review_card_img"><img src="profile/user/defaultProfile.jpg"/></div>
+                            <div class="review_card_img"><img src="/profile/user/defaultProfile.jpg"/></div>
                             <div class="review_card_user_name">이주하</div>
                             <div class="review_card_date">2018.09</div>
                             <div class="review_card_warning">신고</div>
@@ -100,14 +88,12 @@
                 <h3>위치 정보</h3>
                 <div id="kakaoMap"></div>
                 <div class="little_title"><i class="fas fa-check"></i> 교통편</div>
-                <div id="transportation">
-                    이곳에 교통편을 입력시키면됩니당
-                </div>
+                <div id="transportation">${poom.transport }</div>
             </div><!--//map end-->
         </div><!--//poomDetailWrap end-->
         <div id="bookingWrap">
             <form id="bookingDetail">
-                <div id="price">₩ <span id="dayPrice">15,000</span> / 박</div>
+                <div id="price">₩ <span id="dayPrice">${poom.price }</span> / 박</div>
                 <div id="bookingDate">
                     날짜
                     <br/>
@@ -147,7 +133,7 @@
     <div id="poomBg">
         <div id="poomPhotoDetail">
             <div id="poomPhotoSection">
-                <img id="poomPhoto" src="img/poom/poom_15.jpg">
+                <img id="poomPhoto" src="/img/poom/">
                 <div id="poomPhotoBtnWrap">
                     <div id="prevBtn" class="poom_photo_btn"><i class="fas fa-chevron-left"></i></div>
                     <div id="nextBtn" class="poom_photo_btn"><i class="fas fa-chevron-right"></i></div>
@@ -157,38 +143,11 @@
                 <i class="far fa-times-circle cursor_pointer"></i>
                 <div id="poomPhotoListWrap">
                     <ul id="poomPhotoListInner">
-                        <li class="poom_photo on ">
-                            <img src="img/poom/poom_11.jpg" width="64px" height="64px" alt="너무나 잘 돌봐주는 집">
-                        </li>
+                    <c:forEach items="${photoList }" var="photo">
                         <li class="poom_photo">
-                            <img src="img/poom/poom_12.jpg" width="64px" height="64px" alt="도마뱀을 맡아드립니다~">
+                            <img src="/img/poom/${photo.img }" width="64px" height="64px" alt="${photo.caption }">
                         </li>
-                        <li class="poom_photo">
-                            <img src="img/poom/poom_13.jpg" width="64px" height="64px" alt="나무나무! 나무에요">
-                        </li>
-                        <li class="poom_photo">
-                            <img src="img/poom/poom_14.jpg" width="64px" height="64px" alt="하선이 바보">
-                        </li>
-                        <li class="poom_photo">
-                            <img src="img/poom/poom_15.jpg" width="64px" height="64px" alt="수정이 생일">
-                        </li>
-                        <li class="poom_photo on ">
-                            <img src="img/poom/poom_11.jpg" width="64px" height="64px" alt="앵주앵주">
-                        </li>
-                        <li class="poom_photo">
-                            <img src="img/poom/poom_12.jpg" width="64px" height="64px" alt="깐동깐동">
-                        </li>
-                        <li class="poom_photo">
-                            <img src="img/poom/poom_13.jpg" width="64px" height="64px" alt="곧 반예순">
-                        </li>
-                        <li class="poom_photo">
-                            <img src="img/poom/poom_14.jpg" width="64px" height="64px"
-                                 alt="이거 진짜 너무 힘들어요 이거 css진짜 너무 어려워요ㅜㅜㅜㅜ">
-                        </li>
-                        <li class="poom_photo">
-                            <img class="poom_photo_img" src="img/poom/poom_15.jpg" width="64px" height="64px"
-                                 alt="진짜 쉬운줄알고 잡았다가 뚝배기 터졌습니다... 제가 잘못했습니다.. .살려주세요......ㅜㅜㅜㅜㅜ">
-                        </li>
+                    </c:forEach>
                     </ul><!--//poomPhotoListBox-->
                     <div class="poom_photo_list_cover"></div>
                     <div class="poom_photo_list_cover"></div>
@@ -199,29 +158,28 @@
         </div><!--//poomPhotoDetail-->
     </div><!--//poomBg-->
 <c:import url="/WEB-INF/template/footer.jsp"/>
-<script src="/WEB-INF/js/paymentPopup.js"></script>
-<script src="/WEB-INF/js/poomPhotoDetailPopup.js"></script>
+<script src="/js/paymentPopup.js"></script>
 <script>
     //*************카카오맵***********************************************************
     var mapContainer = document.getElementById('kakaoMap'), // 지도를 표시할 div
         mapOption = {
-            center: new kakao.maps.LatLng(37.4809615, 126.9521689), // 지도의 중심좌표
+            center: new kakao.maps.LatLng(${poom.lat}, ${poom.lng}), // 지도의 중심좌표
             level: 4, // 지도의 확대 레벨,
 
             //지도 확대축소 막고싶으면
             scrollwheel :false,
-            draggable:false
+            draggable:true
         };
 
     var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-    var imageSrc = "img/marker.png", // 마커이미지의 주소입니다
+    var imageSrc = "/img/marker.png", // 마커이미지의 주소입니다
         imageSize = new kakao.maps.Size(100, 100), // 마커이미지의 크기입니다
         imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
     // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
     var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
-        markerPosition = new kakao.maps.LatLng(37.4809615, 126.9521689); // 마커가 표시될 위치입니다
+        markerPosition = new kakao.maps.LatLng(${poom.lat}, ${poom.lng}); // 마커가 표시될 위치입니다
 
     // 마커를 생성합니다
     var marker = new kakao.maps.Marker({
@@ -313,27 +271,14 @@
     //가격계산
 
 
-
-    //****************************사이드바*****************************************
-
-
-
-    $("#headerProfileImage").click(function (e) {
-
-        $("#lnb").slideToggle(200);
-        e.stopPropagation();
-    });
-
-    $("#headerLogin").click(function () {
-        $("#gnbWrap").show();
-        $(this).hide();
-    });
-
-    $("body").click(function () {
-        // alert("zz");
-        $("#lnb").hide();
-    });
-
+	$reviewInner = $("#reviewInner");
+    
+    //리뷰에서 신고하기를 눌렀을 때
+	$reviewInner.on("click",".review_card_warning", function() {
+		const review no = this.dataset.no;
+		
+	});//.review_card_warning click end
+    
     /*----------------------------------팝업----------------------------------------*/
     //버튼클릭하면 팝업 열림
     $("#viewPhotosBtn").on("click",function () {
@@ -345,10 +290,12 @@
     let poomPhotoLength = $(".poom_photo").length;
     console.log(poomPhotoLength);
     let photoIdx = 1;
-    let photoX = 0;
+    //let photoX = 0;
+     photoX = 0;
     let $poomPhotoListInner = $("#poomPhotoListInner");
     // 사진 갯수에 따른 photo_box의 left 한계값
-    let poomPhotoLeft = 0;
+    //let poomPhotoLeft = 0;
+     poomPhotoLeft = 0;
 
     //poom사진 height 변경
     function changePoomPhotoSize() {

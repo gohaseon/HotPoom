@@ -4,11 +4,43 @@ import java.sql.Timestamp;
 
 public class Poom {
 	private int no, userNo, speciesNo, price, petCnt, lat, lng;
-	private String type, title, checkIn, checkOut, introduce, amenity, mainAddress, subAddress, postNum, phoneNum, transport;
+	private String type, title, checkIn, checkOut, introduce, amenity, mainAddress, subAddress, postNum, phoneNum, transport, speciesName, mainImg, hostName, hostImg;
 	private Timestamp regdate;
 	
 	public Poom() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public String getHostName() {
+		return hostName;
+	}
+
+	public void setHostName(String hostName) {
+		this.hostName = hostName;
+	}
+
+	public String getHostImg() {
+		return hostImg;
+	}
+
+	public void setHostImg(String hostImg) {
+		this.hostImg = hostImg;
+	}
+
+	public String getSpeciesName() {
+		return speciesName;
+	}
+
+	public void setSpeciesName(String speciesName) {
+		this.speciesName = speciesName;
+	}
+
+	public String getMainImg() {
+		return mainImg;
+	}
+
+	public void setMainImg(String mainImg) {
+		this.mainImg = mainImg;
 	}
 
 	public int getNo() {

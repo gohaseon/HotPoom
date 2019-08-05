@@ -1,11 +1,11 @@
 @charset "UTF-8";
-.btn {
+#paymentPopup .btn {
     border: 2px solid #C50532;
     border-radius: 10px;
     color:#C50532;
     cursor: pointer;
 }
-.btn:hover {
+#paymentPopup .btn:hover {
     background-color: #C50532;
     cursor: pointer;
     color: #fff;

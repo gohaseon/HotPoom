@@ -4,6 +4,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="pooms">
 
-	
+	<select id="selectPoomDetail" parameterType="int" resultType="Poom">
+		SELECT p.no no, p.type type, p.title title, p.user_no userNo,u.profile_img hostImg, u.name hostName, p.species_no speciesNo, s.name speciesName, p.price price, p.check_in checkIn, p.check_out checkOut, p.pet_cnt petCnt, p.introduce introduce, p.amenity amenity, p.main_address mainAddress, p.sub_address subAddress, p.post_num postNum, p.transport transport, p.lat lat, p.lng lng, pt.img mainImg
+		FROM pooms p, species s, photos pt, users u
+		WHERE p.species_no = s.no
+		AND p.user_no = u.no
+		AND pt.content_no = p.no
+		AND pt.type = 'M'
+		AND p.no = #{no}
+	</select>
 
 </mapper>

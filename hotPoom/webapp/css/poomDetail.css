@@ -157,7 +157,7 @@ h3{
     padding:20px;
     padding-bottom: 80px;
     position: relative;
-    border-bottom: 1px solid #424242;
+    /*border-bottom: 1px solid #424242;*/
     margin:10px 0;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
@@ -219,8 +219,8 @@ h3{
 }
 #grade {
     position: relative;
-    left: 455px;
-    top: -50px;
+    left: 55px;
+    top: -46px;
 }
 .fa-star {
     color: #fee101;
