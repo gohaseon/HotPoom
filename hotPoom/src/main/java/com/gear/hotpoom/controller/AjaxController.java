@@ -1,11 +1,8 @@
 package com.gear.hotpoom.controller;
 
-<<<<<<< HEAD
-import java.util.List;
-=======
+import java.util.List; 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
->>>>>>> master
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,24 +10,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-<<<<<<< HEAD
 import com.gear.hotpoom.service.AddressesService;
 import com.gear.hotpoom.service.PoomsService;
 import com.gear.hotpoom.service.SpeciesService;
 import com.gear.hotpoom.vo.Address;
 import com.gear.hotpoom.vo.Poom;
 import com.gear.hotpoom.vo.Species;
-=======
 import com.gear.hotpoom.service.PoomsService;
 import com.gear.hotpoom.service.SpeciesService;
->>>>>>> master
 
 @RestController
 @RequestMapping(value="/ajax")
 public class AjaxController {
 
 	@Autowired
-<<<<<<< HEAD
 	private SpeciesService speciesService;
 	@Autowired
 	private PoomsService poomsService;
@@ -58,11 +51,6 @@ public class AjaxController {
 	public List<Address> autocompleteLocation(@PathVariable String location) {
 		return addressesService.getList(location);
 	}//autocompleteLocation() end
-
-=======
-	private PoomsService poomsService;
-	@Autowired
-	private SpeciesService speciesService;
 	
 	
 	@RequestMapping(value="poom/page/{page}", method=RequestMethod.GET)
@@ -76,5 +64,4 @@ public class AjaxController {
 		return speciesService.searchSpeciesName(name);
 	}
 	
->>>>>>> master
 }

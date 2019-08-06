@@ -1,29 +1,22 @@
 package com.gear.hotpoom.service;
 
-<<<<<<< HEAD
 import java.util.List;
-=======
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
->>>>>>> master
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gear.hotpoom.dao.PoomsDAO;
-<<<<<<< HEAD
 import com.gear.hotpoom.vo.Poom;
-=======
 import com.gear.hotpoom.util.PaginateUtil;
 import com.gear.hotpoom.vo.PageVO;
->>>>>>> master
 
 @Service
 public class PoomsServiceImpl implements PoomsService{
 
 	@Autowired
 	private PoomsDAO poomsDAO;
-<<<<<<< HEAD
 	
 	
 	//hot poom
@@ -37,7 +30,9 @@ public class PoomsServiceImpl implements PoomsService{
 	public List<Poom> getListNP() {
 		return poomsDAO.selectListNP();
 	}//getListNP() end
-=======
+	
+	
+	
 	@Autowired
 	private PaginateUtil paginateUtil;
 	
@@ -52,5 +47,4 @@ public class PoomsServiceImpl implements PoomsService{
 		return map;
 	}
 	
->>>>>>> master
 }
