@@ -142,8 +142,8 @@
         아직 등록된 리뷰가 없습니다 <i class="far fa-sad-cry"></i>
     </div>
 </li>
-<@}@>
-<@_.each(reviewList,function(review){
+<@};@>
+<@_.each(reviewList,function(review){@>
 <li>
     <div class="review_card_content"><@=review.content@></div>
     <div class="review_card_img"><img src="/profile/user/<@=review.profileImg@>"/></div>
