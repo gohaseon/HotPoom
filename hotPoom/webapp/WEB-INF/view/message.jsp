@@ -222,7 +222,7 @@
 		/*-----------------------------메세지--------------------*/
 		/*-------------------------웹소켓-----------------------*/
 		
-		//webSocket stomp client
+//webSocket stomp client
 let stompClient = null;
 
 function connect() {

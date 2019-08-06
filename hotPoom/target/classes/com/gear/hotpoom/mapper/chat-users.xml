@@ -5,11 +5,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="chat-users">
 
 	<select id="selectChatList" resultType="ChatUser" parameterType="int">
-		SELECT u.no no, u.name name, u.profile_img profileImg, roomNo
+		SELECT u.no no, u.name name, u.profile_img profileImg, r.roomNo roomNo, m.no msgNo, ms.content title, ms.regdate lastTime
 		FROM(SELECT b.user_no no, b.room_no roomNo
 	 		 FROM chat_users a, chat_users b
-	 		 WHERE a.user_no = #{no} AND a.room_no = b.room_no AND b.user_no != #{no}) r, users u
-		WHERE u.no = r.no
+	 		 WHERE a.user_no = #{no} AND a.room_no = b.room_no AND b.user_no != #{no}
+	 		 ORDER BY b.regdate) r, users u, (SELECT room_no roomNo,MAX(no) no
+		 	 								  FROM messages
+											  GROUP BY room_no) m, messages ms
+		WHERE u.no = r.no AND r.roomNo = m.roomNo AND m.no = ms.no
+		ORDER BY m.no DESC
 	</select>
 	
 	

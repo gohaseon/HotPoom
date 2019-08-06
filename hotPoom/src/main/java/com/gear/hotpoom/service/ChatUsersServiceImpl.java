@@ -27,14 +27,15 @@ public class ChatUsersServiceImpl implements ChatUsersService {
 		List<ChatUser> chatUsers = chatRoomsDAO.selectChatRoom(no);
 
 		for (ChatUser user : chatUsers) {
-			
-			Message message = messagesDAO.selectTitle(user.getRoomNo());
 
-			System.out.println(message.getContent().length());
+			String content = user.getTitle();
 			
-			user.setTitle(message.getContent());
-			user.setLastTime(message.getRegdate());
-
+			int contentLength = user.getTitle().length();
+			
+			if(contentLength >= 12) {
+				content = content.substring(0,12) + "...";
+				user.setTitle(content);
+			}
 			
 		}
 		return chatUsers;

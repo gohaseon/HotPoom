@@ -4,12 +4,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="messages">
 
-	<select id="selectTitle" resultType="Message" parameterType="int">
-		SELECT m.no no, content, regdate
-		FROM(SELECT MAX(no) no
-		 	 FROM messages
-	 		 WHERE room_no = #{no}) r, messages m
-		WHERE r.no = m.no
-	</select>
 
 </mapper>
