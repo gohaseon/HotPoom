@@ -4,6 +4,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="pooms">
 
+<<<<<<< HEAD
+<!-- New poom -->
+<select id="selectListNP" resultType="POOM">
+	SELECT img, type, title, petName, petCnt, regdate
+	FROM(SELECT ph.img img, po.type type, po.title title, s.name petName, po.pet_cnt petCnt, po.regdate regdate
+		FROM pooms po, photos ph, species s
+		WHERE po.no = ph.content_no AND po.species_no = s.no AND ph.type = 'M'
+		ORDER BY regdate DESC)
+	WHERE rownum BETWEEN 1 AND 8
+
+</select>
+
+
+<!-- Hot poom -->
+<select id="selectListHP" resultType="POOM">
+	SELECT no, img, type, title, score
+	FROM(SELECT po.no no, ph.img img, po.type type, po.title title, NVL(score.score,0) score
+	FROM pooms po, photos ph,   
+	(SELECT TRUNC(AVG(r.score),1) score, b.poom_no poomNo
+		FROM reviews r, bookings b
+		WHERE r.booking_no = b.no
+		GROUP BY b.poom_no) score	
+	WHERE po.no = ph.content_no AND ph.type = 'M' 
+	AND score.poomNo(+) = po.no 
+	ORDER BY score DESC)
+	WHERE rownum BETWEEN 1 AND 8
+</select>
+=======
 	<resultMap type="Poom" id="selectPoom">
 		<result property="no" column="no" javaType="int"/>
 		<result property="speciesNo" column="speciesNo" javaType="int"/>
@@ -92,5 +120,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				ORDER BY price 
 			</if>
 	</select>
+>>>>>>> master
 
 </mapper>

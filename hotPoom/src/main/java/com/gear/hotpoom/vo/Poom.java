@@ -4,11 +4,17 @@ import java.sql.Timestamp;
 import java.util.List;
 
 public class Poom {
+<<<<<<< HEAD
+	private int no, userNo, speciesNo, price, petCnt, lat, lng;
+	private String type, title, checkIn, checkOut, introduce, amenity, mainAddress, subAddress, postNum, phoneNum, transport, img, petName;
+	private double score;
+=======
 	private int no, userNo, speciesNo, price, petCnt, score,count;
 	private double lat, lng;
 	private String type, title, checkIn, checkOut, 
 	introduce, amenity, mainAddress, subAddress, postNum, phoneNum, transport, speciesName;
 	private List<Photo> poomPhotos;
+>>>>>>> master
 	private Timestamp regdate;
 	
 	public Poom() {
@@ -198,5 +204,29 @@ public class Poom {
 	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
 	}
-	
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+	public double getScore() {
+		return score;
+	}
+
+	public void setScore(double score) {
+		this.score = score;
+	}
+
+	public String getPetName() {
+		return petName;
+	}
+
+	public void setPetName(String petName) {
+		this.petName = petName;
+	}
+
 }

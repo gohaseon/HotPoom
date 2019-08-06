@@ -20,4 +20,9 @@ public class SpeciesDAOImpl implements SpeciesDAO{
 		return session.selectList("species.searchSpeciesForPoomList", "%"+name+"%");
 	}
 	
+	//index species autocomplete
+	@Override
+	public List<Species> selectList(String species) {
+		return session.selectList("species.selectList", "%"+species+"%");
+	}//selectList() end
 }
