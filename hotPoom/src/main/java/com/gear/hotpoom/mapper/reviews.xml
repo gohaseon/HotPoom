@@ -10,8 +10,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE p.no = b.poom_no
 		AND r.booking_no = b.no
 		AND r.user_no = u.no
-		AND poom_no = 19
+		AND poom_no = #{no}
 		ORDER BY r.regdate DESC
 	</select>
+	
 
 </mapper>

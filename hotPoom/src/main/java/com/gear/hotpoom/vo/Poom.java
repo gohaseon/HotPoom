@@ -3,13 +3,29 @@ package com.gear.hotpoom.vo;
 import java.sql.Timestamp;
 
 public class Poom {
-	private int no, userNo, speciesNo, price, petCnt;
-	private double lat, lng;
+	private int no, userNo, speciesNo, price, petCnt, reviewCnt;
+	private double lat, lng, avgScore;
 	private String type, title, checkIn, checkOut, introduce, amenity, mainAddress, subAddress, postNum, phoneNum, transport, speciesName, mainImg, hostName, hostImg;
 	private Timestamp regdate;
 	
 	public Poom() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public int getReviewCnt() {
+		return reviewCnt;
+	}
+
+	public void setReviewCnt(int reviewCnt) {
+		this.reviewCnt = reviewCnt;
+	}
+
+	public double getAvgScore() {
+		return avgScore;
+	}
+
+	public void setAvgScore(double avgScore) {
+		this.avgScore = avgScore;
 	}
 
 	public String getHostName() {

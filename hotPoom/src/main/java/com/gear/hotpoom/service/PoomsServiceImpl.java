@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.gear.hotpoom.dao.PetsDAO;
 import com.gear.hotpoom.dao.PhotosDAO;
 import com.gear.hotpoom.dao.PoomsDAO;
+import com.gear.hotpoom.dao.ReviewsDAO;
 import com.gear.hotpoom.vo.Pet;
 import com.gear.hotpoom.vo.Photo;
 import com.gear.hotpoom.vo.Poom;

@@ -74,12 +74,10 @@
     position: absolute;
     width: 170px;
     height: 20px;
-    top: 130px;
+    top: 125px;
     text-align: center;
-
-
 }
-#hostUserName span {
+#hostUserName>a {
     cursor: pointer;
     /*background: rebeccapurple;*/
 }
@@ -131,7 +129,7 @@
 }
 #poomIntroduceDetail,#precautions {
     width: 530px;
-    min-height: 150px;
+    min-height: 50px;
     padding: 10px;
     font-weight: normal;
     font-size: 16px;

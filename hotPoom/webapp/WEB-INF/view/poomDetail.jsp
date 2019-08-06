@@ -23,9 +23,9 @@
             <h2>${poom.title}</h2>
             <div id="poomAddress">${poom.mainAddress }</div>
             <div id="hostUserProfile">
-                <img id="hostUserProfileImage" src="/profile/user/${poom.hostImg }"/>
+                <a href="/user/${poom.userNo }"><img id="hostUserProfileImage" src="/profile/user/${poom.hostImg }"/></a>
                 <div id="hostUserName">
-                    <span>${poom.hostName }</span>
+                    <a href="/user/${poom.userNo }">${poom.hostName }</a>
                 </div>
                 <div id="sendMessage" class="btn"><a href="/message/${poom.userNo }">호스트에게 연락하기</a></div>
             </div>
@@ -53,37 +53,12 @@
             </div><!--//poomIntroduceInner end-->
             <div id="reviewInner">
                 <h3>리뷰</h3>
-                <div id="grade"><i class="fas fa-star"></i> 4.8(2)</div>
+                <div id="grade"><i class="fas fa-star"></i> ${poom.avgScore }(${poom.reviewCnt })</div>
                 <div class="review_card">
                     <ul>
-                    <c:if test="${reviewList.isEmpty() }">
-                        <li>
-                            <div id="reviewNone">
-                                아직 등록된 리뷰가 없습니다 <i class="far fa-sad-cry"></i>
-                            </div>
-                        </li>
-                    </c:if>
-                    <c:forEach items="${rerviewList }" var="review">
-                        <li>
-                            <div class="review_card_content">${review.content }</div>
-                            <div class="review_card_img"><img src="/profile/user/${review.profileImg }"/></div>
-                            <div class="review_card_user_name">${review.userName }</div>
-                            <div class="review_card_date"><fmt:formatDate value="${review.regdate }" pattern="YYYY.MM"/></div>
-                            <div class="review_card_warning" data-no="${review.no }">신고</div>
-                        </li>
-                    </c:forEach>
-                        <li>
-                            <div class="review_card_content">저희 집 고양희 집 고양이가 다른 곳에 맡기면항상 예민해져서 왔는ㄷ ㅔ여기는
-                                평소랑 저희 집 고양이가 다른 곳에 맡기면항상 예민해져서 왔는ㄷ ㅔ여기는 평소랑 저희 집 고양이가 다른 곳에 맡
-                                기면항상 예민해져서 왔는ㄷ ㅔ여기는 평소랑 저희 집 고양이가 다른 곳에 맡기면항상 예민해져서 왔는ㄷ ㅔ여기는 평소
-                                랑 저희 집를 많이 주는지 애기가 똥똥해져셔 왔더라구요... 아니 뭐 귀엽다고여 ㅎㅎㅎㅎ
-                            </div>
-                            <div class="review_card_img"><img src="/profile/user/defaultProfile.jpg"/></div>
-                            <div class="review_card_user_name">이주하</div>
-                            <div class="review_card_date">2018.09</div>
-                            <div class="review_card_warning">신고</div>
-                        </li>
+                    <!-- reviewListTmp -->
                     </ul>
+                    <div id="paginate"></div>
                 </div>
             </div><!--//reviewInner end-->
             <div id="poomMapWrap">
@@ -160,8 +135,61 @@
         </div><!--//poomPhotoDetail-->
     </div><!--//poomBg-->
 <c:import url="/WEB-INF/template/footer.jsp"/>
+<script type="text/template" id="reviewListTmp">
+<@if(reviewList.length==0){@>
+<li>
+    <div id="reviewNone">
+        아직 등록된 리뷰가 없습니다 <i class="far fa-sad-cry"></i>
+    </div>
+</li>
+<@}@>
+<@_.each(reviewList,function(review){
+<li>
+    <div class="review_card_content"><@=review.content@></div>
+    <div class="review_card_img"><img src="/profile/user/<@=review.profileImg@>"/></div>
+    <div class="review_card_user_name"><@=review.userName@></div>
+    <div class="review_card_date"><@=moment(review.regdate).format("YYYY.MM)@></div>
+    <div class="review_card_warning" data-no="<@=review.no@>">신고</div>
+</li>
+<@});@>
+</script>
 <script>
-	console.log("lat:${poom.lat}, lng:${poom.lng}");
+_.templateSettings = {interpolate: /\<\@\=(.+?)\@\>/gim,evaluate: /\<\@([\s\S]+?)\@\>/gim,escape: /\<\@\-(.+?)\@\>/gim};
+let reviewListTmp = _.template($("#reviewListTmp").html());
+
+	const $reviewCard = $(".review_card");
+	const $paginate = $("#paginate");
+	
+	
+	let pageNo = 1;
+
+	$reviewCard.on("click","paginte a",function(){
+		
+	});//paginte a click end
+	
+	
+	//리뷰리스트 불러옴
+	function getReviewList() {
+		$.ajax({
+			url:"/ajax/review",
+			type:"get",
+			dataType:"json",
+			data: {
+				"pageNo":pageNo,
+				"no":${poom.no}
+			},
+			error:function(){
+				alert("점검중!!");
+			},//error end
+			success:function(data){
+				$reviewCard.html(reviewListTmp({reviewList:data.reviewList}));
+				$paginate.html(data.paginate);
+			}//success end
+		});//ajax end
+	};//getReviewList end
+
+
+
     //*************카카오맵***********************************************************
     var mapContainer = document.getElementById('kakaoMap'), // 지도를 표시할 div
         mapOption = {
@@ -294,7 +322,7 @@
 
     // 불러온 사진 갯수
     let poomPhotoLength = $(".poom_photo").length;
-    console.log(poomPhotoLength);
+    console.log("사진갯수:"+poomPhotoLength);
     let photoIdx = 1;
     //let photoX = 0;
      photoX = 0;
@@ -394,13 +422,17 @@
         photoX = -40 -(photoIdx - 2) * 80;
 
         if(photoIdx == 1) {
-            photoIdx += 1;
+        	if(poomPhotoLength != 1) {
+	            photoIdx += 1;
+        	}//if end
             changePoomInfo();
         } else if(photoIdx == 2) {
-            photoIdx += 1;
-            photoX = -40 ;
-            $poomPhotoListInner.css("left", photoX);
-            console.log(photoX);
+        	if(poomPhotoLength != 2) {
+	            photoIdx += 1;
+	            photoX = -40 ;
+	            $poomPhotoListInner.css("left", photoX);
+	            console.log(photoX);
+        	}//if end
             changePoomInfo();
         } else if(photoIdx == poomPhotoLength - 2) {
             photoIdx += 1;
