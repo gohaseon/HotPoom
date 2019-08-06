@@ -17,3 +17,4 @@
         </ul>
     </div><!--//policy -->
 </footer><!--// footer -->
+<script src="/js/bigCard.js"></script>

@@ -8,4 +8,6 @@ public interface SpeciesDAO {
 	
 	public List<Species> selectList(String species);
 
+	public List<Species> selectSpeciesName(String name);
+	
 }
