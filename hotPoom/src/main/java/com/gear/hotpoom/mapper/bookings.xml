@@ -4,11 +4,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bookings">
 
-	<update id="updateType" parameterType="Booking">
+	<update id="updateState" parameterType="Booking">
 		UPDATE bookings
 		SET user_state = 'F', host_state = 'F'
-		WHERE no = #{no}
-		AND systimestamp - #{endDay} > 0
+		WHERE user_state = 'D'
+		AND host_state = 'D'
+        AND no = #{no}
+		AND sysdate - CAST(end_day as DATE) > (SELECT check_out/24
+                                                FROM bookings b, pooms p
+                                                WHERE b.poom_no = p.no
+                                                AND b.no = #{no})
 	</update>
 
 	<select id="selectTotal" parameterType="int" resultType="int">

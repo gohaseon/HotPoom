@@ -16,8 +16,8 @@ public class BookingsDAOImpl implements BookingsDAO{
 	
 	
 	@Override //booking 페이지 볼 때 기간이 지난 것 F로 바꿈
-	public int updateType(Booking booking) {
-		return session.update("updateType", booking);
+	public int updateState(Booking booking) {
+		return session.update("updateState", booking);
 	}
 	
 	@Override //예약 수 가져옴

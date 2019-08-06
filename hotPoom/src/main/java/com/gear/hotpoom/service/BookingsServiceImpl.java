@@ -29,12 +29,17 @@ public class BookingsServiceImpl implements BookingsService{
 		PageVO pageVO = new PageVO(pageNo, numPage);
 		pageVO.setNo(userNo);
 		List<Booking> list = bookingsDAO.selectList(pageVO);
-		//리뷰를 쓴 것이 있는지
+		//기간이 지난것 중 리뷰를 쓴 것이 있는지
 		for(Booking booking : list) {
+			System.out.println("bookingNo:"+booking.getNo());
+			int type = bookingsDAO.updateState(booking);
+			System.out.println("type:"+type);
+			if(type==1) {
+				booking.setUserState("F");
+				booking.setHostState("F");
+			}
 			booking.setIsReview(reviewsDAO.isReview(booking.getNo())==1);
-			
 		}
-		
 		map.put("bookingList", list);
 		
 		int numBlock = 5;

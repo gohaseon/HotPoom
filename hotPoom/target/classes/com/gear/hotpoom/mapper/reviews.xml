@@ -9,5 +9,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM reviews
 		WHERE booking_no = #{no}
 	</select>
+	
+	<insert id="insert" parameterType="Review">
+		INSERT INTO reviews(no, user_no, booking_no, content, score, regdate)
+		VALUES(reviews_seq.nextval, #{userNo}, #{bookingNo}, #{content}, #{score}, systimestamp)
+	</insert>
 
 </mapper>

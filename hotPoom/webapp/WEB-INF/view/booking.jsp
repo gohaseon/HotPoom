@@ -20,7 +20,7 @@
             <input id="bookingNo" type="hidden" name="bookingNo" value="">
             <input id="score" type="hidden" name="score" value="">
                 <button type="button" class="close_popup far fa-times-circle"></button>
-                <div id="poomImg" style='background-image:url("/img/img")'></div><!--사진-->
+                <div id="poomImg" style='background-image:url("")'></div><!--사진-->
                 <div id="poomName">TITLE</div>
                 <div id="poomDate">DATE</div>
                 <textarea id="poomTextarea" name="content" placeholder="리뷰를 입력해주세요."></textarea>
